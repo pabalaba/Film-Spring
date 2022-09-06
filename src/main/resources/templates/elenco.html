@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${titolo}"></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+	td{
+		padding-left: 1vw;
+		padding-right: 1vw;
+	}
+</style>
+</head>
+<body>
+	
+	<h1 th:text="${titolo}"></h1>
+	<table class="table table-borderless">
+		<tr>
+			<th>Id</th>
+			<th>Titolo</th>
+			<th>Descrizione</th>
+			<th>Anno Pubblicazione</th>
+			<th>Durata</th>
+			<th>Regista</th>
+			<th>Attori</th>
+			<th>Generi</th>
+			<th>Visualizza</th>
+			<th>Aggiorna</th>
+			<th>Elimina</th>
+		<tr>
+		<tr th:each="film: ${lista}">
+			<td th:text="${film.id}"></td>
+			<td th:text="${film.titolo}"></td>
+			<td th:text="${film.descrizione}" style="max-width: 17.5vw;"></td>
+			<td th:text="${film.annoPubblicazione}"></td>
+			<td th:text="${film.durata}"></td>
+			<td th:text="${film.regista}"></td>
+			<td th:text="${film.attori}" style="max-width: 17.5vw;"></td>
+			<td th:text="${film.generi}" style="max-width: 17.5vw;"></td>
+			<td><a th:href="@{'/mvc/films/' + ${film.id}}" class= "btn btn-primary">Visualizza</a></td>
+			<td><button class="btn btn-primary">Aggiorna</button></td>
+			<td><button class="btn btn-primary">Elimina</button></td>
+		</tr>
+	</table>
+</body>
+</html>
